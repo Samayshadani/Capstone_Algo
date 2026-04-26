@@ -39,7 +39,7 @@ export function useVoiceInterface() {
 
                 // Init Recognition
                 recognitionRef.current = new SpeechRecognition();
-                recognitionRef.current.continuous = false; // Stop after silence
+                recognitionRef.current.continuous = true; // Allow pauses without stopping
                 recognitionRef.current.interimResults = true;
                 recognitionRef.current.lang = "en-US";
 
@@ -122,14 +122,13 @@ export function useVoiceInterface() {
         setState(prev => ({ ...prev, isListening: true, transcript: "", error: null }));
 
         recognitionRef.current.onresult = (event: any) => {
-            let finalTranscript = "";
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
-                if (event.results[i].isFinal) {
-                    finalTranscript += event.results[i][0].transcript;
-                }
+            let currentTranscript = "";
+            for (let i = 0; i < event.results.length; ++i) {
+                // Combine both interim and final results from index 0 for the whole session
+                currentTranscript += event.results[i][0].transcript;
             }
-            if (finalTranscript) {
-                setState(prev => ({ ...prev, transcript: finalTranscript, retryCount: 0 }));
+            if (currentTranscript.trim()) {
+                setState(prev => ({ ...prev, transcript: currentTranscript, retryCount: 0 }));
             }
         };
 
@@ -231,10 +230,15 @@ export function useVoiceInterface() {
         setState(prev => ({ ...prev, isListening: false, retryCount: 0 }));
     };
 
+    const clearTranscript = () => {
+        setState(prev => ({ ...prev, transcript: "" }));
+    };
+
     return {
         ...state,
         startListening,
         stopListening,
-        speak
+        speak,
+        clearTranscript
     };
 }

@@ -47,6 +47,20 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_GIT_COMMIT: commitHash,
     NEXT_PUBLIC_APP_VERSION: version,
   },
+  // Required to silence Next.js 16 Turbopack/webpack mismatch warning.
+  // The webpack config below is still used for production builds.
+  turbopack: {},
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // pdfjs-dist (used by pdf-parse v2) optionally requires 'canvas'.
+      // Stub it out so the server build doesn't throw a module-not-found error.
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        canvas: false,
+      };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
