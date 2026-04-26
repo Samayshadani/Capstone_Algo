@@ -1,0 +1,371 @@
+@import "tailwindcss";
+
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Midnight Industrial Theme - Default (Matte Black) */
+  --background: oklch(0.1 0 0);
+  /* Matte Black */
+  --foreground: oklch(1 0 0);
+  /* Pure White */
+  --card: oklch(0.12 0 0);
+  /* Slightly lighter matte */
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(1 0 0);
+
+  --primary: oklch(0.7 0.2 140);
+  /* Acid Green - The "Industrial" spark */
+  --primary-foreground: oklch(0.1 0 0);
+
+  --secondary: oklch(0.15 0 0);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.8 0 0);
+  /* Much brighter muted text */
+
+  --accent: oklch(0.7 0.16 170);
+  /* Cyber Teal - Secondary accent */
+  --accent-foreground: oklch(0.1 0 0);
+
+  --destructive: oklch(0.5 0.2 25);
+  --destructive-foreground: oklch(0.95 0.01 240);
+
+  --border: oklch(0.2 0 0);
+  /* Subtle structural borders */
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.7 0.2 140);
+
+  /* Data Viz Colors */
+  --chart-1: oklch(0.7 0.2 140);
+  /* Amber */
+  --chart-2: oklch(0.7 0.16 170);
+  /* Teal */
+  --chart-3: oklch(0.65 0.2 300);
+  /* Deep Purple (sparingly) */
+  --chart-4: oklch(0.8 0.15 90);
+  /* Yellow */
+  --chart-5: oklch(0.6 0.15 25);
+  /* Red */
+
+  --radius: 0.5rem;
+  /* Sharper radius for industrial look */
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.7 0.2 140);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.7 0.2 140);
+}
+
+.dark {
+  /* Midnight Industrial Theme - Dark Mode (Primary) */
+  --background: oklch(0.1 0 0);
+  /* Matte Black */
+  --foreground: oklch(1 0 0);
+  /* Pure White */
+  --card: oklch(0.12 0 0);
+  /* Slightly lighter matte */
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(1 0 0);
+
+  --primary: oklch(0.7 0.2 140);
+  /* Acid Green - The "Industrial" spark */
+  --primary-foreground: oklch(0.1 0 0);
+
+  --secondary: oklch(0.15 0 0);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.8 0 0);
+  /* Much brighter muted text */
+
+  --accent: oklch(0.7 0.16 170);
+  /* Cyber Teal - Secondary accent */
+  --accent-foreground: oklch(0.1 0 0);
+
+  --destructive: oklch(0.5 0.2 25);
+  --destructive-foreground: oklch(0.95 0.01 240);
+
+  --border: oklch(0.2 0 0);
+  /* Subtle structural borders */
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.7 0.2 140);
+
+  /* Data Viz Colors */
+  --chart-1: oklch(0.7 0.2 140);
+  /* Amber */
+  --chart-2: oklch(0.7 0.16 170);
+  /* Teal */
+  --chart-3: oklch(0.65 0.2 300);
+  /* Deep Purple (sparingly) */
+  --chart-4: oklch(0.8 0.15 90);
+  /* Yellow */
+  --chart-5: oklch(0.6 0.15 25);
+  /* Red */
+
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.7 0.2 140);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.7 0.2 140);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    /* subtle noise texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    /* Helps matte feel */
+  }
+}
+
+.glass-panel {
+  @apply backdrop-blur-xl bg-[#0A0A0A]/60 border border-white/10;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* New Background System: The Void Grid */
+.aurora-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+    /* Matte Black Gradient */
+    radial-gradient(circle at 50% 0%, oklch(0.15 0 0) 0%, transparent 70%),
+    /* Subtle Green Warmth (very faint) */
+    radial-gradient(circle at 85% 10%, oklch(0.7 0.2 140 / 0.05) 0%, transparent 30%),
+    /* Solid Matte Base */
+    linear-gradient(to bottom, oklch(0.1 0 0), oklch(0.08 0 0));
+}
+
+/* Grid overlay */
+.aurora-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  z-index: -1;
+}
+
+@layer components {
+
+  /* Focus Mode: Sharper, more technical */
+  .focus-mode-wrapper:has(.glow-card:hover) .glow-card:not(:hover) {
+    filter: grayscale(0.5) brightness(0.7);
+    opacity: 0.8;
+    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  }
+
+  .glow-card {
+    @apply relative transition-all ease-out;
+    transition-duration: 300ms;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .glow-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    /* Amber border on hover */
+    box-shadow: 0 0 20px -5px var(--primary);
+    /* Amber glow */
+    z-index: 50;
+  }
+
+  .card-container {
+    @apply transition-all;
+    transition-duration: 400ms;
+  }
+
+  .card-container.dimmed {
+    filter: grayscale(1) opacity(0.5);
+  }
+
+  /* Stat card gradients - Updated for Industrial Theme */
+  .stat-card-yellow {
+    /* Amber/Gold */
+    background: linear-gradient(135deg,
+        oklch(0.7 0.18 70 / 0.15) 0%,
+        oklch(0.12 0.02 240 / 0) 100%);
+    border-left: 2px solid oklch(0.7 0.18 70);
+  }
+
+  .stat-card-purple {
+    /* Teal/Cyber */
+    background: linear-gradient(135deg,
+        oklch(0.7 0.16 170 / 0.15) 0%,
+        oklch(0.12 0.02 240 / 0) 100%);
+    border-left: 2px solid oklch(0.7 0.16 170);
+  }
+
+  .stat-card-green {
+    /* Acid Green */
+    background: linear-gradient(135deg,
+        oklch(0.7 0.2 140 / 0.15) 0%,
+        oklch(0.12 0.02 240 / 0) 100%);
+    border-left: 2px solid oklch(0.7 0.2 140);
+  }
+
+  /* Floating particles - Sharper, less floaty */
+  .particles-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0.3;
+    box-shadow: 0 0 4px var(--primary);
+    animation: tech-float 20s linear infinite;
+  }
+
+  @keyframes tech-float {
+    0% {
+      transform: translateY(100vh) scale(1);
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 0.5;
+    }
+
+    80% {
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: translateY(-10vh) scale(0);
+      opacity: 0;
+    }
+  }
+
+  @keyframes vertical-scroll {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  .animate-vertical-scroll {
+    animation: vertical-scroll 20s linear infinite;
+  }
+
+  .animate-vertical-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Breathing glow for active elements - sharper */
+  .breathing-glow {
+    animation: breathing 3s ease-in-out infinite;
+  }
+
+  @keyframes breathing {
+
+    0%,
+    100% {
+      box-shadow: 0 0 5px var(--primary);
+    }
+
+    50% {
+      box-shadow: 0 0 15px var(--primary);
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[oklch(0.7_0.2_140)] to-[oklch(0.8_0.2_160)];
+  }
+
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[oklch(0.7_0.16_170)] to-[oklch(0.6_0.12_190)];
+  }
+
+  /* Custom Scrollbar Utilities */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thumb-white\/10::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100vh;
+  }
+  .scrollbar-thumb-white\/10::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
