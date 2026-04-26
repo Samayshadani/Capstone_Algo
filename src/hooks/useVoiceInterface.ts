@@ -127,9 +127,9 @@ export function useVoiceInterface() {
                 // Combine both interim and final results from index 0 for the whole session
                 currentTranscript += event.results[i][0].transcript;
             }
-            if (currentTranscript.trim()) {
-                setState(prev => ({ ...prev, transcript: currentTranscript, retryCount: 0 }));
-            }
+            
+            // Always update state to reflect the latest recognized speech
+            setState(prev => ({ ...prev, transcript: currentTranscript, retryCount: 0 }));
         };
 
         recognitionRef.current.onend = () => {
@@ -150,6 +150,7 @@ export function useVoiceInterface() {
 
             // Handle network errors with limited retry
             if (event.error === 'network') {
+                console.error("[Voice] Network error detected. This usually means the browser cannot reach Google's speech servers or microphone permissions are blocked without a prompt.");
                 setState(prev => {
                     const newRetryCount = prev.retryCount + 1;
 

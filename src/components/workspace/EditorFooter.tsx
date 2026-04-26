@@ -211,14 +211,14 @@ export default function EditorFooter({ code, language, difficulty, questionTitle
             if ((window as any).timerControl) {
                 const elapsedSeconds = (window as any).timerControl.getElapsed();
                 (window as any).timerControl.stop();
-                
+
                 // Format time for display
                 const mins = Math.floor(elapsedSeconds / 60);
                 const secs = elapsedSeconds % 60;
-                const timeFormatted = mins > 0 
+                const timeFormatted = mins > 0
                     ? `${mins}m ${secs}s`
                     : `${secs}s`;
-                
+
                 timeMessage = `\n⏱️  Time: ${timeFormatted}`;
             }
 

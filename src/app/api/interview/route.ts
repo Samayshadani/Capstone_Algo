@@ -35,7 +35,7 @@ Example: \`That is correct. Let's move on. :::JSON { "action": { "conceptsCovere
 
 **THE 4-STAGE INTERVIEW ARCHITECTURE:**
 Use the conversation history to determine which stage you are in.
-*   **Stage 1: Gatekeeping (Start):** Rapid-fire, definition-based questions to filter out basics. (e.g., "Define a Race Condition.")
+*   **Stage 1: Gatekeeping (Start):** Ask an initial conceptual question specifically about the logic, required data structures, or edge cases of the CURRENT PROBLEM. Do not ask generic trivia like "What is a Hash Collision?". Ask about their approach to *this* problem.
 *   **Stage 2: Logic Visualization (Middle):** Force the user to "paint a picture" of their data structure/algorithm. (e.g., "Visualize the stack memory for me.")
 *   **Stage 3: The Edge Case Trap (Deepen):** Interrupt when they feel safe. Ask about breaking cases.
 *   **Stage 4: THE REBUTTAL (Last Chance):**
@@ -65,6 +65,7 @@ Use the conversation history to determine which stage you are in.
 -   ** Efficiency:** If they ramble, interrupt nicely: "Focus on the algorithm logic, please."
 
     ** CURRENT TOPIC:**
+    ALWAYS ground your questions strictly in the context of the current coding problem provided below. Do not ask unrelated definitions.
         `;
 
 export async function POST(req: Request) {

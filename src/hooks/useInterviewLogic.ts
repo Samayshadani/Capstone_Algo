@@ -73,7 +73,8 @@ export function useInterviewLogic(questionId: string, questionTitle: string, cod
         stopListening,
         speak,
         hasBrowserSupport,
-        error
+        error,
+        clearTranscript
     } = useVoiceInterface();
 
     const [mode, setMode] = useState<InterviewMode>("voice");
@@ -112,6 +113,27 @@ export function useInterviewLogic(questionId: string, questionTitle: string, cod
         return () => clearInterval(timer);
     }, [code, mode]);
 
+    // 🚀 Auto-Start Interview
+    useEffect(() => {
+        if (questionTitle !== "Loading..." && messages.length === 0 && !processing) {
+            // Trigger the initial greeting and first question
+            handleSendMessage(`SYSTEM: Start the interview. Introduce yourself briefly as JARVIS. The candidate is solving the problem "${questionTitle}". Ask them how they plan to approach this specific problem or what data structures they will use. Do NOT ask generic trivia.`, true);
+        }
+    }, [questionTitle, messages.length, processing]);
+
+    // 🎙️ Auto-Start Microphone after AI finishes speaking
+    const lastAutoStartRef = useRef<number>(-1);
+    useEffect(() => {
+        if (!isSpeaking && mode === "voice" && !processing && messages.length > 0 && !isListening) {
+            const lastMsg = messages[messages.length - 1];
+            // Only auto-start if the last message was from the AI and we haven't auto-started for this message yet
+            if (lastMsg.role === "assistant" && lastAutoStartRef.current !== messages.length) {
+                lastAutoStartRef.current = messages.length;
+                startListening();
+            }
+        }
+    }, [isSpeaking, mode, processing, messages, isListening, startListening]);
+
     // Auto-Process Voice: When silence detected (isListening goes true -> false) and transcript exists
     useEffect(() => {
         if (mode === "voice" && !isListening && transcript && !processing) {
@@ -133,12 +155,22 @@ export function useInterviewLogic(questionId: string, questionTitle: string, cod
             setMessages(newHistory);
         }
 
+        // Determine what gets sent to the API
+        const payloadMessages = isSystemCommand && !text.startsWith(":::SNAPSHOT:::")
+            ? [...newHistory, { role: "user", content: text }]
+            : newHistory;
+
+        // 🧹 Clear transcript after reading it so we don't double-send
+        if (!isSystemCommand) {
+            clearTranscript();
+        }
+
         try {
             const res = await fetch("/api/interview", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    messages: newHistory,
+                    messages: payloadMessages,
                     context: {
                         questionTitle,
                         isSystemCommand,
