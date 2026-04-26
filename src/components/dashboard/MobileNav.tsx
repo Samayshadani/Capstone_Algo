@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Code2, LayoutDashboard, User } from "lucide-react";
+import { Code2, LayoutDashboard, User, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
     { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { label: "Practice", href: "/practice", icon: Code2 },
+    { label: "AI Interview", href: "/ai-interview", icon: Bot },
     { label: "Profile", href: "/profile", icon: User },
 ];
 

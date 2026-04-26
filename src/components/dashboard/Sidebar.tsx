@@ -3,14 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { LayoutDashboard, Compass, Languages, User, LogOut, Code2 } from "lucide-react";
+import { LayoutDashboard, Compass, Languages, User, LogOut, Code2, Trophy, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
     { icon: Compass, label: "Navigator", href: "/navigator" },
+    { icon: Trophy, label: "Contests", href: "/contests" },
     { icon: Languages, label: "Translator", href: "/translator" },
+    { icon: Bot, label: "AI Interview", href: "/ai-interview" },
     { icon: User, label: "Profile", href: "/profile" },
 ];
 

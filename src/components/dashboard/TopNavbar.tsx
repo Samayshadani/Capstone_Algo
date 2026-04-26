@@ -16,7 +16,8 @@ import {
     ShieldCheck,
     Zap,
     Activity,
-    Trophy
+    Trophy,
+    Bot
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -26,6 +27,7 @@ const menuItems = [
     { icon: Compass, label: "Navigator", href: "/navigator" },
     { icon: Trophy, label: "Contests", href: "/contests" },
     { icon: Languages, label: "Translator", href: "/translator" },
+    { icon: Bot, label: "AI Interview", href: "/ai-interview" },
     { icon: User, label: "Profile", href: "/profile" },
 ];
 
