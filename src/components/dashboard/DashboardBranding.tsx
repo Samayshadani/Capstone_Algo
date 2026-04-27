@@ -62,7 +62,7 @@ export default function DashboardBranding() {
                     >
                         <Image
                             src="/algo-logo.png"
-                            alt="AlgoSensei Mascot"
+                            alt="AlgoArena Mascot"
                             fill
                             className="object-contain"
                             priority
@@ -70,7 +70,7 @@ export default function DashboardBranding() {
                     </motion.div>
                 </motion.div>
 
-                {/* --- TEXT: ALGOSENSEI --- */}
+                {/* --- TEXT: ALGOARENA --- */}
                 <div className="relative flex flex-col justify-center h-full pt-4 text-center md:text-left">
 
                     <div className="relative">
@@ -79,13 +79,13 @@ export default function DashboardBranding() {
                                 textShadow: "0 0 25px rgba(var(--primary-rgb), 0.6)", // Constant Shadow
                             }}
                         >
-                            ALGO<span className="text-white">SENSEI</span>
+                            ALGO<span className="text-white">ARENA</span>
                         </h1>
 
                         {/* Soft Bloom Halo (Overlay) - Smoothly fades in on hover */}
                         <div className="absolute inset-0 text-primary blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none mix-blend-screen" aria-hidden="true">
                             <h1 className="text-5xl md:text-7xl font-black tracking-[0.05em] font-mono uppercase">
-                                ALGOSENSEI
+                                ALGOARENA
                             </h1>
                         </div>
                     </div>

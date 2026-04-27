@@ -26,7 +26,7 @@ export default function Sidebar() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-500 to-violet-600 flex items-center justify-center">
                     <Code2 className="text-white w-5 h-5" />
                 </div>
-                <h1 className="text-xl font-bold gradient-text">AlgoSensei</h1>
+                <h1 className="text-xl font-bold gradient-text">AlgoArena</h1>
             </div>
 
             <nav className="flex-1 space-y-2">

@@ -88,7 +88,7 @@ export default function AuthLayout({
                                 <Code2 size={28} className="text-white" />
                             </div>
                             <span className="font-outfit font-extrabold text-3xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-white drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">
-                                AlgoSensei
+                                AlgoArena
                             </span>
                         </div>
                     </div>
